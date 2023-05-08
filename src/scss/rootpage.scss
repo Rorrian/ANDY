@@ -1,0 +1,351 @@
+@charset "UTF-8";
+@use "sass:math";
+
+body.loaded {
+	opacity: 1;
+}
+
+.page{
+	&__first-screen {
+		padding-top: rem(70);
+		@include adaptiveValue("padding-top", 70, 50, 1366, 768);
+		@include adaptiveValue("padding-top", 50, 30, 768, 375);
+		@media (max-width:em(375)){
+			padding-top: rem(30);
+		}
+
+		padding-bottom: rem(70);
+		@include adaptiveValue("padding-bottom", 70, 50, 1366, 768);
+		@include adaptiveValue("padding-bottom", 50, 30, 768, 375);
+		@media (max-width:em(375)){
+			padding-bottom: rem(30);
+		}
+	}
+	&__projects {
+		padding-bottom: rem(70);
+		@include adaptiveValue("padding-bottom", 70, 50, 1366, 768);
+		@include adaptiveValue("padding-bottom", 50, 30, 768, 375);
+		@media (max-width:em(375)){
+			padding-bottom: rem(30);
+		}
+	}
+	&__agency {
+		padding-bottom: rem(70);
+		@include adaptiveValue("padding-bottom", 70, 50, 1366, 768);
+		@include adaptiveValue("padding-bottom", 50, 30, 768, 375);
+		@media (max-width:em(375)){
+			padding-bottom: rem(30);
+		}
+	}
+	&__services {
+		padding-bottom: rem(70);
+		@include adaptiveValue("padding-bottom", 70, 50, 1366, 768);
+		@include adaptiveValue("padding-bottom", 50, 30, 768, 375);
+		@media (max-width:em(375)){
+			padding-bottom: rem(30);
+		}
+	}
+}
+
+.first-screen {	
+	&__container {
+	}
+	&__title.title_h2 {
+		@media (max-width:em(375)){
+			font-size: rem(18);
+		}
+
+		margin-bottom: rem(40);
+		@include adaptiveValue("margin-bottom", 40, 20, 1366, 768);
+		@include adaptiveValue("margin-bottom", 20, 16, 768, 375);
+		@media (max-width:em(375)){
+			margin-bottom: rem(16);
+		}
+	}
+	&__text {
+		& p:first-child{
+			font-weight: 500;
+			line-height: math.div(115 , 85);
+			color: $darkGreyColor;
+			
+			font-size: rem(85);
+			@include adaptiveValue("font-size", 85, 48, 1366, 768);
+			@include adaptiveValue("font-size", 48, 34, 768, 375);
+			@media (max-width:em(375)){
+				font-size: rem(34);
+			}
+
+			margin-bottom: rem(20);
+			@include adaptiveValue("margin-bottom", 20, 15, 1366, 768);
+			@include adaptiveValue("margin-bottom", 15, 12, 768, 375);
+			@media (max-width:em(375)){
+				margin-bottom: rem(12);
+			}
+		}
+		& p:last-child{
+			line-height: math.div(40 , 32);
+
+			font-size: rem(32);
+			@include adaptiveValue("font-size", 32, 20, 1366, 768);
+			@media (max-width:em(768)){
+				font-size: rem(20);
+			}
+		}
+	}
+}
+//====================================================================================================
+.projects {
+	&__container {
+		position: relative;
+
+		@media (max-width:em(1365)){
+			  padding-right: 0;
+		}
+	}
+	&__title.title_h2 {
+		@media (max-width:em(768)){
+			  font-size: rem(18);
+		}
+	}
+	&__slider {
+	}
+	&__swiper {
+	}
+	&__slide {
+	}
+
+	&__navigation {
+	}
+	&__button_prev,
+	&__button_next {
+	}
+	&__button_prev {
+}
+	&__button_next {
+}
+}
+.project-card {
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	row-gap: rem(20);
+	@include adaptiveValue("row-gap", 20, 10, 1366, 320);
+	height: 100%;
+	
+	&__img-ibg {
+		display: block;
+		padding-bottom: percent(276, 380);
+		
+		& img{
+			border-radius: 10px;
+		}
+	}
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-content: space-between;
+		row-gap: rem(12);
+		@include adaptiveValue("row-gap", 12, 6, 1366, 320);
+	}
+	&__title.title_h3 {
+		@include adaptiveValue("font-size", 18, 16, 768, 375);
+		@media (max-width:em(375)){
+			font-size: rem(16);
+		}
+	}
+	&__description {
+		@include adaptiveValue("font-size", 18, 16, 1366, 768);
+		@include adaptiveValue("font-size", 16, 12, 768, 375);
+		@media (max-width:em(375)){
+			font-size: rem(12);
+		}
+	}
+}
+
+//====================================================================================================
+.agency {
+	&__container {
+		position: relative;
+
+		@media (max-width:em(1365)){
+			padding-right: 0;
+		}
+	}
+	&__title {
+	}
+	&__subtitle {
+		line-height: math.div(70 , 48);
+		color: $darkGreyColor;;
+		
+		font-size: rem(48);
+		@include adaptiveValue("font-size", 48, 28, 1366, 768);
+		@include adaptiveValue("font-size", 28, 24, 767.98, 375);
+		@media (max-width:em(375)){
+			margin-bottom: rem(24);
+		}
+
+		margin-bottom: rem(40);
+		@include adaptiveValue("margin-bottom", 40, 20, 1366, 768);
+		@include adaptiveValue("margin-bottom", 20, 16, 768, 375);
+		@media (max-width:em(375)){
+			margin-bottom: rem(16);
+		}
+
+		&-text:first-child{
+			&:first-child{
+				@include adaptiveValue("font-size", 28, 14, 768, 375);
+				@media (max-width:em(375)){
+					  margin-bottom: rem(10);
+				}
+			}
+		}
+	}
+
+	&__slider {
+	}
+	&__swiper {
+		@media (min-width:em(768)){
+			margin-bottom: rem(15);
+		}
+		@media (max-width:em(375)){
+			margin-bottom: rem(50);
+		}
+	}
+	&__slide {
+	}
+
+	&__navigation {
+	}
+	&__button_prev.slider-navigation__button_prev,
+	&__button_next.slider-navigation__button_next {
+		top: 64%;
+	}
+	&__button_prev {
+}
+	&__button_next {
+}
+}
+.employee-card {
+	display: flex;
+	flex-direction: column;
+	row-gap: rem(20);
+	@include adaptiveValue("row-gap", 20, 10, 1366, 320);
+	height: 100%;
+	overflow: hidden;
+
+	&__img-ibg {
+		display: block;
+		padding-bottom: percent(380, 380);
+		
+		& img{
+			border-radius: rem(10);
+		}
+	}
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-content: space-between;
+		row-gap: rem(12);
+		@include adaptiveValue("row-gap", 12, 6, 1366, 320);
+	}
+	&__title {
+	}
+	&__position {
+		@include adaptiveValue("font-size", 18, 16, 1366, 768);
+		@include adaptiveValue("font-size", 16, 12, 768, 375);
+		@media (max-width:em(375)){
+			font-size: rem(12);
+		}
+	}
+}
+
+//====================================================================================================
+.services {
+	&__container {
+		position: relative;
+
+		@media (max-width:em(1365)){
+			padding-right: 0;
+	}
+	}
+	&__title.title_h2 {
+		@media (min-width:em(1366)){
+			margin-bottom: rem(20);
+		}
+	}
+	&__subtitle {
+		font-size: rem(70);
+		@include adaptiveValue("font-size", 70, 40, 1366, 768);
+		@include adaptiveValue("font-size", 40, 34, 768, 375);
+		@media (max-width:em(375)){
+			font-size: rem(34);
+		}
+
+		line-height: math.div(98, 70);
+		color: $darkGreyColor;;
+
+		margin-bottom: rem(50);
+		@include adaptiveValue("margin-bottom", 50, 25, 1366, 768);
+		@media (max-width:em(768)){
+			margin-bottom: rem(25);
+		}
+		@media (max-width:em(375)){
+			margin-bottom: rem(20);
+		}
+
+		@media (min-width:em(1366)){
+			width: rem(1200);
+		}
+	}
+
+	&__slider {
+	}
+	&__swiper {
+	}
+	&__slide {
+	}
+
+	&__navigation {
+	}
+	&__button_prev.slider-navigation__button_prev,
+	&__button_next.slider-navigation__button_next {
+		top: 78%;
+	}
+	&__button_prev.slider-navigation__button_prev {
+		left: 3vw;
+	}
+}
+.service-card {
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	row-gap: rem(16);
+	@include adaptiveValue("row-gap", 16, 8, 1366, 320);
+	height: 100%;
+
+	&__title {
+		line-height: math.div(35 , 25);
+		letter-spacing: -0.03em;
+		white-space: nowrap;
+	}
+
+	&__details-list {
+		display: flex;
+		flex-direction: column;
+		row-gap: rem(10);
+		@include adaptiveValue("row-gap", 10, 5, 1366, 320);
+	}
+	&__details-item {	
+		@include adaptiveValue("font-size", 18, 16, 1366, 768);
+		@include adaptiveValue("font-size", 16, 12, 768, 375);
+		@media (max-width:em(375)){
+			font-size: rem(12);
+		}
+
+		letter-spacing: -0.005em;
+	}
+}

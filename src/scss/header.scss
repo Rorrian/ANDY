@@ -1,0 +1,235 @@
+.header {
+	padding-top: rem(50);
+	@include adaptiveValue("padding-top", 50, 30, 1366, 768);
+	@include adaptiveValue("padding-top", 30, 20, 768, 375);
+	@media (max-width:em(375)){
+		padding-top: rem(20);
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: rem(10);
+	}
+	&__button {
+		display: none;
+
+		@media (max-width: em(655)) {
+			display: block;
+			position: relative;
+			width: rem(29);
+			height: rem(26);
+			z-index: 5;
+			cursor: pointer;
+
+			&::before,
+			&::after,
+			:last-child {
+				content: "";
+				position: absolute;
+				right: 0;
+				width: 100%;
+				height: rem(3);
+				background-color: $mainColor;
+				transition: top 0.3s ease 0s,
+					transform 0.3s ease 0s,
+					background-color 0.3s ease 0s;
+			
+				._menu-show &{
+					background-color: $whiteColor;
+				}
+			}
+			&::before {
+				top: 3px;
+			}
+			&::after {
+				bottom: 0;
+			}
+		}
+
+		._menu-show & {
+			:last-child {
+				opacity: 0;
+			}
+
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+  &__logo {
+		position: relative;
+		width: rem(114);
+		@include adaptiveValue("width", 114, 78, 1366, 768);
+		@include adaptiveValue("width", 78, 58, 768, 375);
+		@media (max-width:em(375)){
+			width: rem(58);
+		}
+		height: rem(50);
+		@include adaptiveValue("height", 50, 35, 1366, 768);
+		@include adaptiveValue("height", 35, 26, 768, 375);
+		@media (max-width:em(375)){
+			height: rem(26);
+		}
+		z-index: 5;
+
+		& img{
+			position: absolute;
+			width: 100%;
+			height: auto;
+			transition: opacity 0.3s ease 0s;
+		}
+		
+		&_light{
+			opacity: 0;
+
+			._menu-show &{
+				opacity: 1;
+			}
+		}
+		&_dark{
+			opacity: 1;
+
+			._menu-show &{
+				opacity: 0;
+			}
+		}
+	}
+	&__menu {
+	}
+	&__phone {		
+		z-index: 5;
+
+		@media (max-width: em(768)) {
+			transition: transform 0.5s ease 0s;
+
+			@media (any-hover: hover){
+				&:hover{
+					transform: rotate(260deg);
+				}
+			}
+		}
+
+		&-mobile-btn {
+			display: none;
+			z-index: 5;
+
+			._menu-show &{
+				display: block;
+
+				& .button {
+					font-size: rem(18);
+					padding: rem(15) rem(24);
+				}
+			}
+		}
+	}
+}
+
+.menu {
+	width: percent(403, 1200);
+	@media (max-width: em(768)) {
+		width: percent(277, 683);
+	}
+
+	@media (max-width: em(655)) {
+		position: fixed;
+		top: 0;
+		left: -120vw;
+		overflow: auto;
+		z-index: 4;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		
+		width: 100%;
+		height: 100vh;
+		padding-bottom: rem(40);
+		background-color: $greyColor;
+		color: $whiteColor;
+		transition: left 0.3s ease 0s;
+
+		._menu-show & {
+			left: 0;
+		}
+	}
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: rem(10);
+
+		@media (max-width: em(655)) {
+			flex-direction: column;
+			row-gap: rem(26);
+			padding: rem(94) rem(15) rem(15);
+		}
+	}
+	&__item {
+		@media (min-width:em(635)){
+			&:nth-child(2){
+				color: $purpleColor;
+			}
+		}
+	}
+	&__link {
+		font-weight: 400;
+		line-height: math.div(20, 18);
+		letter-spacing: -0.005em;
+
+		transition: color 0.3s ease 0s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: $purpleColor;
+			}
+		}
+
+		@include adaptiveValue("font-size", 18, 16, 1366, 768);
+		@include adaptiveValue("font-size", 16, 22, 768, 375);
+		@media (max-width: em(375)) {
+			font-size: rem(22);
+		}
+	}
+}
+
+.phone {
+	&__icon {
+		display: none;
+
+		@media (max-width: em(655)) {
+			display: block;
+
+			._menu-show & path {
+				fill: $whiteColor;
+				transition: fill 0.31s ease 0s;
+			}
+		}
+	}
+	&__number {
+		display: none;
+		white-space: nowrap;
+
+		@media (min-width: em(655)) and (max-width: em(1365.98)) {
+			display: block;
+		}
+	}
+	&__text {
+		display: none;
+		white-space: nowrap;
+
+		@media (min-width: em(1366)) {
+				display: block;
+		}
+	}
+}

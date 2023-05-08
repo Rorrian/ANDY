@@ -1,0 +1,301 @@
+@use "sass:math";
+
+.error{
+  font-weight: 700;
+  color: red;
+}
+
+.visually-hidden{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.button {
+	display: flex;
+	justify-content:center;
+	align-items: center;
+
+  border-radius: rem(30);
+  transition: all 0.3s ease 0s;
+
+	white-space: nowrap;
+
+	&_small{
+		padding: rem(15) rem(24);
+		border-radius: rem(20);
+		letter-spacing: -0.005em;
+
+		@media (max-width:em(1365.98)){
+			font-size: rem(16);
+			line-height: math.div(17, 16);	  
+			padding: rem(11) rem(15);		  
+		}
+	}
+	&_big{
+		font-size: rem(25);
+		line-height: math.div(27 , 25); 
+		padding: rem(18) rem(30);		
+		border-radius: rem(30);
+
+		@media (max-width:em(1365.98)){
+			font-size: rem(16);
+			line-height: math.div(17, 16);	  
+			padding: rem(13) rem(32);	
+		}
+	}
+
+	&_blank {
+		background-color: $whiteColor;
+		color: $purpleColor;
+
+		@media (any-hover: hover) {
+		 &:hover {
+		  background-color: $purpleColor;
+			color: $whiteColor;
+		 }
+		}
+	}
+	&_full {
+		background-color: $purpleColor;
+		color: $whiteColor;
+
+		@media (any-hover: hover) {
+		 &:hover {
+		  background-color: $whiteColor;
+			color: $purpleColor;
+		 }
+		}
+	}
+}
+
+.title {
+	&_h2{
+		font-weight: 500;
+		line-height: math.div(38, 32);
+		letter-spacing: 0.01em;
+		color: $purpleColor;
+		
+		font-size: rem(32);
+		@include adaptiveValue("font-size", 32, 20, 1366, 768);
+		@media (max-width:em(768)){
+			font-size: rem(20);
+		}
+		
+		margin-bottom: rem(40);
+		@include adaptiveValue("margin-bottom", 40, 20, 1366, 768);
+		@include adaptiveValue("margin-bottom", 20, 16, 768, 375);
+		@media (max-width:em(375)){
+			margin-bottom: rem(16);
+		}
+	}
+
+	&_h3{
+		font-weight: 500;
+		line-height: math.div(30 , 25);
+		letter-spacing: 0.01em;
+		
+		font-size: rem(25);
+		@include adaptiveValue("font-size", 25, 18, 1366, 768);
+		@include adaptiveValue("font-size", 18, 14, 768, 375);
+		@media (max-width:em(375)){
+			font-size: rem(14);
+		}
+	}
+}
+
+//====================================================================================================
+.slider-navigation{
+	display: block;
+
+	@media (max-width: em(1365)) {
+		display: none;
+	}
+
+	&__button_prev,
+	&__button_next {
+		position: absolute;
+		top: 39%;
+
+		width: rem(30);
+		height: rem(30);
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		background-color: $purpleColor;
+		border-radius: 50%;
+		transition: background-color 0.3s ease 0s, opacity 0.3s ease 0s;
+		opacity: 1;
+
+		cursor: pointer;
+
+		&::before {
+			font-size: rem(10.87);
+			color: $whiteColor;
+		}
+
+		@media (any-hover: hover){
+			&:hover{
+				background-color: $whiteColor;
+				
+				&::before{
+					color: $purpleColor;
+				}
+			}
+		}
+
+		&.swiper-button-disabled {
+			opacity: 0;
+	 }
+	}
+
+	&__button_prev {
+		left: 5vw;
+		right: auto;
+
+		&::before {
+			transform: rotate(180deg);
+		}
+
+		@media (min-width:em(1600)){
+			left: 3vw;
+		}
+	}
+
+	&__button_next {
+		right: 5vw;
+		left: auto;
+
+		@media (min-width:em(1600)){
+			right: 3vw;
+		}
+	}
+}
+
+//======================================================================================
+// Попап
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease 0s;
+  pointer-events: none;
+  z-index: 3;
+}
+.popup-show body::after {
+  opacity: 1;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  padding: rem(30) rem(10);
+  transition: visibility 0.8s ease 0s;
+  visibility: hidden;
+  pointer-events: none;
+
+	&_open {
+	z-index: 50;
+	visibility: visible;
+	overflow: auto;
+	pointer-events: auto;
+	}
+
+	&_open &__content {
+	visibility: visible;
+	transform: scale(1);
+	}
+
+	&__wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+
+	&__content {
+	position: relative;
+	width: 100%;
+	max-width: rem(500);
+	padding: rem(20) rem(50) rem(50);
+	background-color: $whiteColor;
+	border: 1px solid $whiteColor;
+	border-radius: rem(4);
+	box-shadow: 0px 60px 80px -20px rgba(30, 33, 44, 0.16), 0px 26px 24px -10px rgba(30, 33, 44, 0.1), 0px 12px 10px -6px rgba(30, 33, 44, 0.08), 0px 4px 4px -4px rgba(30, 33, 44, 0.05);
+
+	visibility: hidden;
+	transform: scale(0);
+	transition: transform 0.3s ease 0s;
+
+	.lock .popup__content {
+		visibility: visible;
+	}
+	}
+
+	&__close{
+	&::before,
+	&::after{
+		content: "";
+		position: absolute;
+		top: rem(56);
+		right: rem(56);
+
+		width: rem(21);
+		height: 2px;
+		background-color: $mainColor;
+		border-radius: 1px;
+	}
+
+	&::before{
+		transform: rotate(45deg);
+	}
+
+	&::after{
+		transform: rotate(-45deg);
+	}
+	}
+
+	&_title {
+		text-align: center;
+	}
+}
+
+.form-request {
+	display: flex;
+	flex-direction: column;
+	row-gap: rem(20);
+
+	&__label {
+		display: flex;
+		flex-direction: column;
+		row-gap: rem(8);
+	}
+
+	&__input {
+		padding: rem(11) rem(16);
+		border: 1px solid #d7dadd;
+		border-radius: rem(4);
+
+		::placeholder {
+			color: #9a9ca5;
+		}
+	}
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}

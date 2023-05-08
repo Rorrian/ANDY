@@ -1,0 +1,33 @@
+<div class="popup popup-leave-request">
+	<div class="popup__wrapper">
+		<div class="popup__content popup-leave-request__content">
+			<button data-close type="button" class="popup__close" aria-label="Close"></button>
+			<div class="popup__body popup-leave-request__body">
+				<h2 class="popup__title popup-leave-request__title title_h2">Оставить заявку</h2>
+				<form action="https://echo.htmlacademy.ru" method="post" name="review"
+						class="popup-leave-request__form form-request">
+					<label class="form-request__label">
+						Имя
+						<input autocomplete="off" type="text" name="request-input-name"
+							data-error="Неверно указано имя!"
+							placeholder="Ваше имя" class="form-request__input" required>
+					</label>
+					<label class="form-request__label">
+						Номер телефона
+						<input autocomplete="off" type="number" name="request-input-phone"
+							data-error="Неверно указан номер телефона!"
+							placeholder="Ваш номер телефона" class="form-request__input input-phone" required>
+					</label>
+					<label class="form-request__label">
+						Почта
+						<input autocomplete="off" type="text" name="request-input-mail"
+							data-error="Неверно указана почта!"
+							placeholder="Ваш адрес почты" class="form-request__input input-mail" required>
+					</label>
+			
+					<button type="submit"class="form-request__button button button_full button_small">Отправить заявку</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

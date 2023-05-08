@@ -1,0 +1,99 @@
+.footer {
+	padding-top: rem(76);
+	@include adaptiveValue("padding-top", 76, 40, 1366, 768);
+	@include adaptiveValue("padding-top", 40, 30, 768, 320);
+	@media (max-width:em(375)){
+		padding-bottom: rem(30);
+	}
+
+	padding-bottom: rem(110);
+	@include adaptiveValue("padding-bottom", 110, 60, 1366, 768);
+	@include adaptiveValue("padding-bottom", 60, 30, 768, 375);
+	@media (max-width:em(375)){
+		padding-bottom: rem(30);
+	}
+
+	background-color: $greyColor;
+	color: $whiteColor;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		@media (min-width:em(1366)){
+			padding-right: rem(65);
+		}
+
+		row-gap: rem(22);
+		@include adaptiveValue("row-gap", 22, 20, 1366, 635);
+		@media (max-width:em(635)){
+			row-gap: rem(20);
+		}
+	}
+	&__title {
+		color: $lightPurpleColor;
+
+		@media (max-width:em(635)){
+			margin-bottom: 0;
+		}
+	}
+	&__inner {
+		display: flex;
+		align-items: center;
+		column-gap: rem(2);
+
+		@media (max-width:em(635)){
+			flex-direction: column;
+			row-gap: rem(26);
+		}
+
+		@media (max-width:em(375)){
+			row-gap: rem(15);
+		}
+	}
+	&__slogan {
+		line-height: math.div(96, 72);
+		letter-spacing: -0.01em;
+		
+		font-size: rem(72);
+		@include adaptiveValue("font-size", 72, 38, 1366, 768);
+		@include adaptiveValue("font-size", 38, 34, 768, 375);
+		@media (max-width:em(375)){
+			row-gap: rem(34);
+		}
+
+		& span{
+			white-space: nowrap;
+		}
+	}
+	&__contacts {
+	}
+}
+
+.contacts {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@include adaptiveValue("font-size", 18, 15, 1366, 768);
+	@media (max-width:em(768)){
+		font-size: rem(15);
+	}
+
+	&__button {
+		margin-bottom: rem(30);
+		@include adaptiveValue("margin-bottom", 30, 10, 1366, 768);
+		@include adaptiveValue("margin-bottom", 10, 14, 768, 375);
+		@media (max-width:em(375)){
+			margin-bottom: rem(14);
+		}
+	}
+	&__phone {
+		margin-bottom: rem(20);
+		@include adaptiveValue("margin-bottom", 20, 7, 1366, 768);
+		@media (max-width:em(768.1)){
+			margin-bottom: rem(7);
+		}
+	}
+	&__email {
+	}
+}
