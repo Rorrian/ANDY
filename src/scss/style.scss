@@ -24,6 +24,7 @@ $mainColor: #000000; // Цвет шрифта по умолчанию
 $darkGreyColor: #1D1D1D;
 $greyColor: #2C2C2C;
 $purpleColor: #914BD6;
+$darkPurpleColor: #772CC2;
 $lightPurpleColor: #CE9DFF;
 $whiteColor: #ffffff;
 
@@ -153,8 +154,3 @@ body {
 // Подключение стилей отдельных блоков
 @import "header";
 @import "footer";
-
-// Подключение стилей отдельных страниц
-//@import "home";
-//@import "catalog";
-//@import "product";

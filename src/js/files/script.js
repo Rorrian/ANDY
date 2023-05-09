@@ -75,18 +75,23 @@ if (popupLinks) {
 
 function openPopupHandler(e, popupLink) {
 	const popupName = popupLink.dataset.popup ? popupLink.dataset.popup : null;
-	const currentPopup =document.querySelector(`.${popupName}`);
+	const currentPopup = document.querySelector(`.${popupName}`);
 	if (currentPopup) {
 		openPopup(currentPopup);
 	} else {
 		console.error('Нет такого всплывающего окна!');
 	}
+
+	if (!bodyLockStatus) {
+		bodyLock();
+	}
+	
 	e.preventDefault();
 }
 
 function openPopup(currentPopup) {
 	if (currentPopup && isPopupReopeningUnblocked) {
-		const activePopup =document.querySelector('.popup_open');
+		const activePopup = document.querySelector('.popup_open');
 		if (activePopup) {
 			closePopup(activePopup, false);
 		}
@@ -102,7 +107,7 @@ function openPopup(currentPopup) {
 	}
 }
 
-const popupCloseBtns =document.querySelectorAll('.popup__close');
+const popupCloseBtns = document.querySelectorAll('.popup__close');
 if (popupCloseBtns) {
 	popupCloseBtns.forEach(popupCloseBtn => {
 		popupCloseBtn.addEventListener("click", (e) => {
@@ -118,6 +123,14 @@ function closePopup(activePopup, doUnlock = true) {
 		if (doUnlock) {
 			popupReopenUnlock();
 		}
+
+		const activePopups = document.querySelectorAll('.popup_open');
+		if (!activePopups.length) {
+			bodyUnlock();
+		}
+
+		activePopup.classList.remove("_thanks-message-show");
+		clearForm(activePopup);
 	}
 }
 
@@ -153,20 +166,39 @@ function closePopupByKey(e) {
 const ALL_INPUTS_SELECTORS = 'input[type="text"],input[type="number"]'
 
 document.addEventListener("submit", (e) => {
-  const inputs = e.target.querySelectorAll(ALL_INPUTS_SELECTORS);
+	const form = e.target;
+	let isValid = true;
+  const inputs = form.querySelectorAll(ALL_INPUTS_SELECTORS);
+
   inputs.forEach((input) => {
-    if (!input.value) {
-      if (
-        !input.parentElement.querySelector(".error") &&
-        !input.parentElement.parentElement.querySelector(".error")
-      ) {
+		const inputHasError = input.parentElement.querySelector(".error")
+		const inputParentHasError = input.parentElement.querySelector(".error")
+    if (!input.value || inputHasError && inputParentHasError) {
+      if (!inputHasError && !inputParentHasError) {
         createErrorMessage(input);
       }
-
-      e.preventDefault();
+			isValid = false;
     }
-  });
+  });	
+
+	if(isValid){
+		e.preventDefault();
+		const currentPopup = form.closest(".popup");
+		currentPopup.classList.add('_thanks-message-show');
+		clearForm(currentPopup);
+		// Отправка данных
+	} else e.preventDefault();
 });
+
+function clearForm(currentPopup) {
+	currentPopup.querySelectorAll('input, textarea').forEach(input => {
+		input.value = "";
+	})
+
+	currentPopup.querySelectorAll('.error').forEach(error => {
+		error.remove();
+	})
+}
 
 const inputs = document.querySelectorAll(ALL_INPUTS_SELECTORS);
 inputs.forEach((input) => {

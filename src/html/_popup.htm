@@ -1,32 +1,51 @@
 <div class="popup popup-leave-request">
 	<div class="popup__wrapper">
-		<div class="popup__content popup-leave-request__content">
+		<div class="popup__content">
 			<button data-close type="button" class="popup__close" aria-label="Close"></button>
 			<div class="popup__body popup-leave-request__body">
-				<h2 class="popup__title popup-leave-request__title title_h2">Оставить заявку</h2>
+				<h2 class="popup__title title_h2">Оставить заявку</h2>
 				<form action="https://echo.htmlacademy.ru" method="post" name="review"
 						class="popup-leave-request__form form-request">
+
 					<label class="form-request__label">
-						Имя
+						<span class="visually-hidden">Имя</span>
 						<input autocomplete="off" type="text" name="request-input-name"
 							data-error="Неверно указано имя!"
-							placeholder="Ваше имя" class="form-request__input" required>
+							placeholder="Имя" class="form-request__input" required>
 					</label>
 					<label class="form-request__label">
-						Номер телефона
+						<span class="visually-hidden">Телефон</span>
 						<input autocomplete="off" type="number" name="request-input-phone"
 							data-error="Неверно указан номер телефона!"
-							placeholder="Ваш номер телефона" class="form-request__input input-phone" required>
+							placeholder="Телефон" class="form-request__input input-phone" required>
 					</label>
 					<label class="form-request__label">
-						Почта
+						<span class="visually-hidden">Электронная почта</span>
 						<input autocomplete="off" type="text" name="request-input-mail"
 							data-error="Неверно указана почта!"
-							placeholder="Ваш адрес почты" class="form-request__input input-mail" required>
+							placeholder="Электронная почта" class="form-request__input input-mail" required>
 					</label>
-			
-					<button type="submit"class="form-request__button button button_full button_small">Отправить заявку</button>
+					<label class="form-request__label">
+						<span class="visually-hidden">Текст сообщения</span>
+						<textarea class="form-request__input form-request__textarea"
+							placeholder="Текст сообщения" name="request-input-message"></textarea>
+					</label>
+
+					<div class="form-request__bottom">
+						<button type="submit"class="button button_full button_big form-request__button">Связаться с нами</button>
+						<p class="form-request__terms">
+							Нажимая на&nbsp;эту кнопку,<br>
+							я соглашаюсь с&nbsp;<a href="#" target="_blank" class="form-request__terms-link">правилами сайта</a></p>
+					</div>
 				</form>
+
+				<div class="popup__thanks-message thanks-message">
+					<p class="thanks-message__title">Спасибо!</p>
+					<p class="thanks-message__text">Мы свяжемся с вами в ближайшее время</p>
+					<button type="submit" class="button button_full button_big thanks-message__button">
+						Вернуться на главную
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
