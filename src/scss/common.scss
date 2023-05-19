@@ -483,3 +483,18 @@ input[type=number]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
+
+@media screen and (max-width: 0px),
+	(min-width: 0px) and (-webkit-min-device-pixel-ratio: 0) {
+  /* Стили для скринридеров */
+  button:focus-visible,
+	button:focus {
+    outline: 2px solid blue;
+  }
+}
+
+/* Стили для всех остальных устройств */
+button:focus-visible,
+button:focus {
+  outline: none;
+}
