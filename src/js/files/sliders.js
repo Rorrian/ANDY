@@ -48,7 +48,7 @@ function initSliders() {
 								slidesPerView: 3.2,
 								spaceBetween: 20,
 							},
-							1366: {
+							1024: {
 								slidesPerView: 3,
 								spaceBetween: 30,
 							},
@@ -92,7 +92,7 @@ function initSliders() {
 							slidesPerView: 3.2,
 							spaceBetween: 20,
 						},
-						1366: {
+						1024: {
 							slidesPerView: 3,
 							spaceBetween: 30,
 						},
@@ -136,7 +136,7 @@ function initSliders() {
 							slidesPerView: 3.2,
 							spaceBetween: 20,
 						},
-						1366: {
+						1024: {
 							slidesPerView: 4,
 							spaceBetween: 30,
 						},

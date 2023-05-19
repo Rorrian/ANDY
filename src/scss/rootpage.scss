@@ -98,7 +98,7 @@ body.loaded {
 	&__container {
 		position: relative;
 
-		@media (max-width:em(1365)){
+		@media (max-width:em(1024)){
 			  padding-right: 0;
 		}
 	}
@@ -169,7 +169,7 @@ body.loaded {
 	&__container {
 		position: relative;
 
-		@media (max-width:em(1365)){
+		@media (max-width:em(1024)){
 			padding-right: 0;
 		}
 	}
@@ -267,7 +267,7 @@ body.loaded {
 	&__container {
 		position: relative;
 
-		@media (max-width:em(1365)){
+		@media (max-width:em(1024)){
 			padding-right: 0;
 	}
 	}

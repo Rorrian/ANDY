@@ -33,7 +33,7 @@ let isMobile = {
 //</Проверка на мобильное устройство>==================================================
 
 //<Animations>=========================================================================
-if (!isMobile.any()) {
+if (!isMobile.any() && window.innerWidth > 640) {
   const animItems = document.querySelectorAll("[data-anim]");
 
   // Изначально скрывает объекты
