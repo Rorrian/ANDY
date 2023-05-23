@@ -179,11 +179,6 @@
 		}
 	}
 	&__item {
-		@media (min-width:em(635)){
-			&:nth-child(2){
-				color: $purpleColor;
-			}
-		}
 	}
 	&__link {
 		font-weight: 400;
